@@ -1,10 +1,7 @@
 <template>
   <div class="side-bar">
     <div @click="expandSidebar" class="logo">
-      <h2>Point North</h2>
-      <Selectors>
-        <h3>Properties</h3>
-      </Selectors>
+      <img src="~/assets/logo.png" alt="logo" />
     </div>
     <Nav v-if="sidebarExpanded" />
     <Arrow v-else />
@@ -44,15 +41,20 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 1%;
-  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.05);
+  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.15);
+  background-color: #f2f4f5;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  z-index: 2;
 }
 .side-bar:hover {
-  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.15);
+  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.25);
 }
 
 .logo {
   cursor: pointer;
+  border-radius: 7px;
 }
 
 .nav-bar {
@@ -83,32 +85,25 @@ export default {
   font-size: 0em;
 }
 
-h5 {
-  font-size: 24px;
-  color: #4b5e68;
-}
-
-h3 {
-  font-size: 36px;
-  font-weight: 100;
-  color: #3e4e56;
-}
-
 .selectors {
   margin-top: -10px;
 }
 
 h2 {
-  font-size: 50px;
-  font-weight: 300;
-  color: #1f262a;
+  font-size: 36pt;
+  font-weight: 200;
 }
 
 .logo {
-  margin: 5px;
+  margin: 20px;
+  margin-bottom: 0px;
 }
 
 .nav {
+  margin: 20px;
+}
+
+.arrow {
   margin: 20px;
 }
 </style>

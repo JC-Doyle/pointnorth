@@ -8,6 +8,9 @@
     <nuxt-link to="/team">
       <h5>The Team</h5>
     </nuxt-link>
+    <nuxt-link to="/contact">
+      <h5>Contact</h5>
+    </nuxt-link>
   </div>
 </template>
 
@@ -23,9 +26,6 @@ export default {
     page: String,
   },
   methods: {
-    changePage: function () {
-      this.$store.commit('changePage', { page: this.page })
-    },
     toggleProject: function () {
       this.$store.commit('toggleProject')
     },
@@ -43,9 +43,10 @@ export default {
 <style scoped>
 .nav-item {
   opacity: 1;
-  font-size: 24px;
+  font-size: 22pt;
   font-weight: 200;
   margin: 10px;
+  width: 100%;
   justify-self: center;
 }
 
@@ -55,9 +56,15 @@ export default {
 
 h5 {
   cursor: pointer;
-  font-size: 32px;
+  font-size: 22pt;
   margin: 10px;
-  font-weight: 300;
-  color: #1f262a;
+  font-weight: 200;
+  color: #213b47;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
 }
 </style>

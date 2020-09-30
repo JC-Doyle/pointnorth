@@ -2,8 +2,9 @@
   <div class="container">
     <div class="sidebar">
       <Sidebar />
+      <ContactBar />
     </div>
-    <div class="reader">
+    <div class="site">
       <nuxt />
     </div>
   </div>
@@ -14,16 +15,19 @@ export default {
   layout: 'desktop',
 }
 </script>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;1,200;1,300&display=swap');
+<style >
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,800;1,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&display=swap');
 html {
   font-family: 'Raleway', sans-serif;
-  font-size: 16px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background-attachment: fixed;
+  background-position: 10%;
 }
 
 *,
@@ -34,23 +38,72 @@ html {
 }
 
 .container {
-  margin: 30px;
-  display: flex;
-  justify-content: space-between;
+  height: 100%;
 }
 
-.reader {
-  margin-left: 300px;
-  flex-grow: 1;
+.site {
 }
 
 .sidebar {
-  min-width: 300px;
+  width: 350px;
+  height: 100vh;
+  padding: 40px;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header-svg {
+  position: absolute;
+  z-index: -1;
+  margin-left: -10%;
 }
 
 a {
   text-decoration: none;
-  color: #4b5e68;
+}
+h1 {
+  font-size: 100pt;
+  font-family: 'Poiret One', sans-serif;
+  font-weight: 800;
+  color: #3a3a3a;
+  text-align: right;
+  margin-top: 40px;
+  z-index: 3;
+  position: relative;
+}
+h2 {
+  font-size: 50pt;
+  margin: 20px;
+  font-family: 'Poiret One', sans-serif;
+  font-weight: 900;
+  color: #3a3a3a;
+  text-align: center;
+}
+
+h3 {
+  font-size: 44pt;
+  font-family: 'Playfair Display', sans-serif;
+  font-weight: 800;
+  color: #2a1f1d;
+  text-align: left;
+}
+p {
+  margin: 0 5% 4% 5%;
+  color: #312d2d;
+  line-height: 200%;
+  font-size: 18pt;
+}
+
+.injected-reader {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  margin-left: 350px;
+  margin-right: 3%;
+}
+
+.contact-bar {
 }
 </style>

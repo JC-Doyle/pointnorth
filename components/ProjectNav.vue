@@ -43,5 +43,10 @@ h6 {
   font-weight: 200;
   font-style: italic;
 }
+
+a {
+  text-decoration: none;
+  color: rgb(53, 53, 53);
+}
 </style>
 

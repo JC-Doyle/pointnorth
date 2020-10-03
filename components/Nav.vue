@@ -8,9 +8,6 @@
     <nuxt-link to="/team">
       <h5>The Team</h5>
     </nuxt-link>
-    <nuxt-link to="/contact">
-      <h5>Contact</h5>
-    </nuxt-link>
   </div>
 </template>
 
@@ -46,7 +43,6 @@ export default {
   font-size: 22pt;
   font-weight: 200;
   margin: 10px;
-  width: 100%;
   justify-self: center;
 }
 
@@ -56,15 +52,14 @@ export default {
 
 h5 {
   cursor: pointer;
-  font-size: 22pt;
-  margin: 10px;
+  font-size: 2vw;
+  padding: 1vw;
   font-weight: 200;
-  color: #213b47;
+  color: #473621;
+  border-radius: 4px;
 }
 
 a {
   text-decoration: none;
-}
-a:hover {
 }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div class="injected-reader about">
     <div class="team-header">
-      <img class="header-svg" src="~/assets/talbragar.svg" alt="" width="60%" />
       <h1>The Team</h1>
     </div>
     <div class="team">

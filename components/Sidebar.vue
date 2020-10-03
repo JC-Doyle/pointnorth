@@ -1,24 +1,28 @@
 <template>
   <div class="side-bar">
-    <div @click="expandSidebar" class="logo">
-      <img src="~/assets/logo.png" alt="logo" />
+    <div @click="expandSidebar" class="sidebar-top">
+      <img src="~/assets/logo.svg" class="logo" />
+      <div class="logo-box"></div>
     </div>
-    <Nav v-if="sidebarExpanded" />
-    <Arrow v-else />
+    <div class="sidebar-nav">
+      <Nav v-if="sidebarExpanded" />
+    </div>
+    <div class="sidebar-bottom">
+      <img src="~/assets/contact.svg" class="contact" />
+      <div class="contact-box"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import Nav from './Nav.vue'
 import Selectors from './Selectors.vue'
-import Arrow from './Arrow.vue'
 
 export default {
   name: 'Sidebar',
   components: {
     Nav,
     Selectors,
-    Arrow,
   },
   methods: {
     expandSidebar: function () {
@@ -37,24 +41,46 @@ export default {
 </script>
 <style scoped>
 .side-bar {
+  width: 20%;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.15);
-  background-color: #f2f4f5;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  z-index: 2;
 }
-.side-bar:hover {
-  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.25);
+
+.sidebar-top {
+  flex: 1;
+  align-self: center;
+}
+
+.sidebar-nav {
+  flex: 3;
+}
+
+.sidebar-bottom {
+  flex: 1;
+  align-self: center;
+  position: relative;
+  width: 100%;
 }
 
 .logo {
+  z-index: 2;
+  width: 110%;
+  position: relative;
+  right: 5%;
   cursor: pointer;
-  border-radius: 7px;
+}
+
+.contact {
+  z-index: 2;
+  width: 70%;
+  left: 15%;
+  padding: 10px;
+  position: relative;
+  float: center;
+  cursor: pointer;
 }
 
 .nav-bar {
@@ -77,33 +103,36 @@ export default {
   background: none;
 }
 .ease-enter-active {
-  transition: opacity 2s, font-size 0.1s ease;
+  animation: ease-enter 1s;
 }
 
-.ease-enter {
-  opacity: 0;
-  font-size: 0em;
+.ease-enter-active {
+  animation: ease-enter 1s;
 }
 
-.selectors {
-  margin-top: -10px;
+@keyframes ease-enter {
+  0% {
+    opacity: 0;
+    font-size: 0em;
+  }
+  25% {
+    font-size: 2em;
+    opacity: 0;
+  }
+  100% {
+    height: 100%;
+    opacity: 1;
+  }
 }
 
-h2 {
-  font-size: 36pt;
-  font-weight: 200;
-}
-
-.logo {
-  margin: 20px;
-  margin-bottom: 0px;
-}
-
-.nav {
-  margin: 20px;
-}
-
-.arrow {
-  margin: 20px;
+@keyframes ease-leave {
+  0% {
+    transform: scale(1);
+    max-height: 10em;
+  }
+  100% {
+    transform: scale(0);
+    max-height: 0;
+  }
 }
 </style>

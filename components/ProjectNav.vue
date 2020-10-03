@@ -1,5 +1,7 @@
 <template>
-  <div v-if="this.$store.state.projectsExpanded" class="project-list">
+  <div v-if="this.$store.state.projectsExpanded" class="project-nav">
+    <div class="nav-background"></div>
+    <div class="nav-box"></div>
     <h6
       class="project-item"
       v-for="project in projects"
@@ -34,12 +36,39 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped >
-.project-list {
-  margin: 15px;
+.project-nav {
+  position: relative;
+  float: top;
+  top: -10px;
 }
+
+.nav-box {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(141, 137, 137);
+  position: absolute;
+  float: top;
+  height: 170px;
+  width: 54%;
+  left: 23%;
+  top: -40%;
+  z-index: -2;
+}
+
+.nav-background {
+  background-color: rgb(228, 221, 215);
+  position: absolute;
+  float: top;
+  height: 180px;
+  width: 50%;
+  left: 25%;
+  top: -44%;
+  z-index: -1;
+}
+
 h6 {
-  font-size: 28px;
-  margin: 10px;
+  font-size: 24px;
+  margin: 1vw;
   font-weight: 200;
   font-style: italic;
 }

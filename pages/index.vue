@@ -1,7 +1,6 @@
 <template>
   <div class="injected-reader about">
     <div class="about-header">
-      <img class="header-svg" src="~/assets/talbragar.svg" alt="" width="60%" />
       <h1>Developing beautiful homes.</h1>
     </div>
     <div class="intro">

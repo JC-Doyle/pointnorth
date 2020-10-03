@@ -1,8 +1,10 @@
 <template>
   <div class="injected-reader">
     <div class="project-header">
-      <img class="header-svg" src="~/assets/talbragar.svg" alt="" width="60%" />
-      <h1>{{ project.name }}</h1>
+      <ProjectSwitch />
+      <Talbragar v-if="project.name === 'Talbragar'" />
+      <Jameson v-else />
+      <h1 class="project-title">{{ project.name }}</h1>
       <Specsheet />
     </div>
     <div class="intro">
@@ -30,6 +32,10 @@ export default {
       return this.$store.getters.getProjectByName(this.$route.params.project)
     },
   },
+  transition: {
+    name: 'slide',
+    mode: 'out-in',
+  },
 }
 </script>
 
@@ -41,13 +47,14 @@ export default {
 .gallery {
 }
 
-.intro {
-  background-color: #f2f4f5;
-  border-style: solid;
-  border-color: black;
+.intro,
+.gallery {
+  background-color: rgb(245, 238, 233);
+  box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.01);
+  border-color: rgb(155, 145, 145);
   border-width: 1px;
   z-index: 1;
-  margin-top: 20px;
+  margin: 5% 5%;
 }
 
 .catch {
@@ -69,14 +76,45 @@ p {
   z-index: -1;
 }
 
-.gallery {
-  width: 100%;
-  background-color: #f2f4f5;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  z-index: 1;
-  margin-top: 20px;
-  height: 400px;
+.project-title {
+  animation: right-in ease 2s;
+}
+
+.slide-enter-active {
+  animation: slide-in 0.5s;
+  overflow: hidden;
+}
+
+.slide-leave-active {
+  animation: slide-out 0.5s;
+  overflow: hidden;
+}
+
+@keyframes right-in {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-out {
+  0% {
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
 }
 </style>

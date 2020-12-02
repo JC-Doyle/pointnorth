@@ -1,10 +1,11 @@
 <template>
-  <div class="injected-reader about">
-    <div class="about-header">
-      <h1>Developing beautiful homes.</h1>
+  <div class="injected-reader">
+    <div class="header">
+      <SvgHeader :page="project.toLowerCase()" />
+      <h1>Developing {{ word }} homes</h1>
+      <h2>{{ project }}</h2>
     </div>
-    <div class="intro">
-      <h2>About Us</h2>
+    <div class="about">
       <p>
         Established in 2013, Point North Properties is a dynamic and innovative
         residential property development company based in Johannesburg, South
@@ -24,38 +25,98 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   layout: 'default',
+  computed: {
+    project() {
+      return this.$store.state.landing.project
+    },
+    word() {
+      return this.$store.state.landing.word
+    },
+  },
+  methods: {
+    newPage() {
+      this.interval = setInterval(() => {
+        this.$store.commit('landing/nextProject')
+        console.log('projectChange')
+      }, 8000)
+    },
+  },
+  mounted() {
+    this.newPage()
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval)
+  },
+  transition: {
+    name: 'slide',
+    mode: 'out-in',
+  },
 }
 </script>
 
 <style scoped>
 h1 {
-  font-family: 'Playfair Display', sans-serif;
   margin: 10% 10% 10% 40%;
   font-size: 70pt;
   min-width: 600px;
   text-align: right;
   color: #3a3a3a;
 }
-.about-header {
+.header {
   width: 100%;
   margin-right: 10%;
 }
 .intro {
-  background-color: #f2f4f5;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
   z-index: 1;
 }
 
 .about {
-  height: 100vh;
+  position: absolute;
+  top: 120vh;
 }
 .header-svg {
   position: absolute;
   z-index: -1;
   margin-left: -10%;
+}
+
+@keyframes down-out {
+  0% {
+    transform: translateY(0x);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes up-in {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.slide-enter-active {
+  animation: up-in 1s;
+}
+
+.slide-leave-active {
+  animation: down-out 1s;
+}
+
+.slide-leave,
+.slide-enter {
+  opacity: 0;
 }
 </style>

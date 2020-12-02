@@ -1,29 +1,23 @@
 <template>
   <div class="side-bar">
-    <div @click="expandSidebar" class="sidebar-top">
-      <img src="~/assets/logo.svg" class="logo" />
-      <div class="logo-box"></div>
-    </div>
-    <div class="sidebar-nav">
-      <Nav v-if="sidebarExpanded" />
+    <div class="sidebar-top">
+      <img @click="expandSidebar" src="~/assets/logo.svg" class="logo" />
+      <div class="sidebar-nav">
+        <Nav v-if="sidebarExpanded" />
+      </div>
     </div>
     <div class="sidebar-bottom">
-      <img src="~/assets/contact.svg" class="contact" />
-      <div class="contact-box"></div>
+      <h4>Contact</h4>
+      <div class="dot"></div>
+      <a href="mailto:anthony@pointnorth.co.za">anthony@pointnorth.co.za</a>
+      <a href="tel:+27823721600">+27-82-372-1600</a>
     </div>
   </div>
 </template>
 
 <script>
-import Nav from './Nav.vue'
-import Selectors from './Selectors.vue'
-
 export default {
   name: 'Sidebar',
-  components: {
-    Nav,
-    Selectors,
-  },
   methods: {
     expandSidebar: function () {
       this.$store.commit('toggleSidebar')
@@ -41,46 +35,42 @@ export default {
 </script>
 <style scoped>
 .side-bar {
-  width: 20%;
-  padding: 20px;
-  height: 100vh;
   position: fixed;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  z-index: 20;
 }
 
 .sidebar-top {
-  flex: 1;
-  align-self: center;
+  background-color: #a6a6a6;
+  margin: 2vw;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 1px rgba(63, 63, 63, 0.7);
 }
 
-.sidebar-nav {
-  flex: 3;
+.sidebar-top:hover,
+.sidebar-bottom:hover {
+  box-shadow: 0px 0px 5px 1px rgba(63, 63, 63, 0.9);
 }
 
 .sidebar-bottom {
-  flex: 1;
-  align-self: center;
-  position: relative;
-  width: 100%;
+  background-color: #a6a6a6;
+  display: flex;
+  margin: 2vw;
+  padding: 1vw;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px 1px rgba(63, 63, 63, 0.7);
 }
 
 .logo {
   z-index: 2;
-  width: 110%;
-  position: relative;
-  right: 5%;
   cursor: pointer;
-}
-
-.contact {
-  z-index: 2;
-  width: 70%;
-  left: 15%;
-  padding: 10px;
+  width: 14vw;
   position: relative;
-  float: center;
-  cursor: pointer;
 }
 
 .nav-bar {
@@ -89,6 +79,27 @@ export default {
   cursor: pointer;
   padding: 0;
   align-items: center;
+}
+
+h4 {
+  color: rgb(228, 221, 215);
+  font-size: 1.4vw;
+  text-align: center;
+  font-weight: 500;
+}
+
+.dot {
+  height: 4px;
+  width: 4px;
+  background-color: red;
+  margin: 2px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(226, 226, 226);
+  margin: 2px;
+  font-size: 0.9vw;
 }
 
 ::selection {

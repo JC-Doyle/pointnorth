@@ -7,9 +7,10 @@
       v-for="project in projects"
       :key="project.name"
       :page="project.name"
+      :class="{ current: path.includes(project.name) }"
     >
       <nuxt-link :to="'/projects/' + project.name">{{
-        project.name
+        project.title
       }}</nuxt-link>
     </h6>
   </div>
@@ -21,14 +22,15 @@ export default {
   props: {
     page: String,
   },
-  methods: {
-    Clicked: function () {
-      this.$store.commit('toggleProject')
-    },
+  data() {
+    return {}
   },
   computed: {
     projects() {
-      return this.$store.state.projects
+      return this.$store.state.projects.projects
+    },
+    path() {
+      return this.$route.path
     },
   },
 }
@@ -39,43 +41,30 @@ export default {
 .project-nav {
   position: relative;
   float: top;
-  top: -10px;
-}
-
-.nav-box {
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(141, 137, 137);
-  position: absolute;
-  float: top;
-  height: 170px;
-  width: 54%;
-  left: 23%;
-  top: -40%;
-  z-index: -2;
-}
-
-.nav-background {
-  background-color: rgb(228, 221, 215);
-  position: absolute;
-  float: top;
-  height: 180px;
-  width: 50%;
-  left: 25%;
-  top: -44%;
-  z-index: -1;
+  width: 70%;
+  left: 15%;
+  margin-top: -10px;
+  padding: 0.1vw 0vw;
 }
 
 h6 {
-  font-size: 24px;
-  margin: 1vw;
-  font-weight: 200;
-  font-style: italic;
+  font-size: 1.1vw;
+  margin: 0.8vw 1vw;
+  font-weight: 300;
 }
 
 a {
   text-decoration: none;
-  color: rgb(53, 53, 53);
+  color: inherit;
+}
+
+a:hover {
+  font-weight: 500;
+}
+
+.current {
+  color: rgb(233, 49, 85);
+  font-weight: 500;
 }
 </style>
 

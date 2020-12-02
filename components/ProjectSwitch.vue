@@ -12,11 +12,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   computed: {
-    project() {},
+    ...mapGetters({
+      getOthers: 'projects/getOtherProjects',
+    }),
     others() {
-      return this.$store.getters.getOtherProjects(this.$route.params.project)
+      return this.getOthers(this.$route.params.project)
     },
   },
 }
@@ -24,17 +27,14 @@ export default {
 
 <style scoped>
 .project-switch {
-  position: relative;
-  top: 10%;
-  margin-left: 10%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   font-size: 3vmax;
-  background-color: rgb(228, 221, 215);
   font-weight: 100;
   font-family: 'Poiret One', sans-serif;
   font-style: italic;
+  z-index: 5;
 }
 
 .switch-left,
